@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="container">
+    <div class="dropdown">
+        <!-- <div class="select">
+            <span class="selected">Stocks</span>
+            <div class="caret"></div>
+        </div>
+        <ul class="menu">
+            <li>Apple</li>
+            <li>Hulu</li>
+            <li>Netflix</li>
+            <li>Tesla</li>
+            <li class="active">Costco</li>
+            <li>Walmart</li>
+        </ul> -->
+        <select id="locality-dropdown" name="locality">
+        </select>
+    </br>
+        <label for="name">Currently Owned Shares</label>
+    </br>
+    <input type="text" id="name" name="name" required
+       minlength="4" maxlength="8" size="10">
+    </br>
+       <label for="name">Average Price of Shares</label>
+    </br>
+
+<input type="text" id="name" name="name" required
+       minlength="4" maxlength="8" size="10">
+    </br>
+       <label for="name">New Shares Being Purchased</label>
+    </br>
+<input type="text" id="name" name="name" required
+       minlength="4" maxlength="8" size="10">
+    </br>
+       <label for="name">Price of New Shares</label>
+    </br>
+<input type="text" id="name" name="name" required
+       minlength="4" maxlength="8" size="10">
+    </br>
+       <label for="name">Final Average Cost</label>
+    </br>
+
+<input type="text" id="name" name="name" required
+       minlength="4" maxlength="8" size="10">
+    </br>
+    </div>
+    </div>
+<script>
+//     const dropdowns = document.querySelectorAll('.dropdown');
+//     dropdowns.forEach(dropdown=>{
+//         const select = dropdown.querySelector('.select');
+//         const caret = dropdown.querySelector('.caret');
+//         const menu = dropdown.querySelector('.menu');
+//         const options = dropdown.querySelectorAll('.menu li');
+//         const selected = dropdown.querySelector('.selected');
+      
+//         select.addEventListener('click', ()=>{
+//             select.classList.toggle('select-clicked');
+//             caret.classList.toggle('caret-rotate');
+//             menu.classList.toggle('menu-open');
+            
+//         });
+//         options.forEach(option=>{
+//             option.addEventListener('click', ()=>{
+//                 selected.innerText = option.innerText;
+//                 select.classList.remove('select-clicked');
+//                 caret.classList.remove('caret-rotate');
+//                 menu.classList.remove('menu-open');
+//                 options.forEach(option=>{
+//                     option.classList.remove('active');
+//                 });
+//                 option.classList.add('active');
+                
+                
+//             });
+//         });
+//     });
+//     fetch('https://api.twelvedata.com/quote?symbol=AAPL&apikey=')
+// .then(res=>res.json()).then(data=>console.log(data));
+let dropdown = document.getElementById('locality-dropdown');
+dropdown.length = 0;
+
+let defaultOption = document.createElement('option');
+defaultOption.text = 'Choose Stock Company';
+
+dropdown.add(defaultOption);
+dropdown.selectedIndex = 0;
+
+const url = 'https://pkgstore.datahub.io/core/s-and-p-500-companies/constituents_json/data/297344d8dc0a9d86b8d107449c851cc8/constituents_json.json';
+
+const request = new XMLHttpRequest();
+request.open('GET', url, true);
+
+request.onload = function() {
+  if (request.status === 200) {
+    const data = JSON.parse(request.responseText);
+    console.log(data);
+    let option;
+    for (let i = 0; i < data.length; i++) {
+      option = document.createElement('option');
+      option.text = data[i].Name;
+      //console.log(option.text);
+      option.value = data[i].Symbol;
+      
+      dropdown.add(option);
+    }
+   } else {
+    // Reached the server, but it returned an error
+  }   
+}
+
+request.onerror = function() {
+  console.error('An error occurred fetching the JSON from ' + url);
+};
+
+request.send();
+    </script>      
+    
+</body>
+</html>
