@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Login Page</title>
+    <title>iAverage ⚬ Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <h1>
+        <img id="logo" src="/images/companyLogo.png" alt="Logo" />
+    </h1>
     <div class="container">
         <h1 class="label">User Login</h1>
         <form class="login_form" action="index.html" method="post" name="form" onsubmit="return validated()">
@@ -15,7 +18,14 @@
             <input type="password" name="password">
             <div id="password_error">Please enter your password</div>
             <br />
+            <p></p>
+            <br />
+            <p></p>
             <button id="loginButton">Login</button>
+            <h2>Or</h2>
+            <button id="createAccountButton">Create an Account</button>
+            <br />
+            <p></p>
         </form>
     </div>
     <script src="login.js"></script>

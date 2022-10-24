@@ -9,6 +9,10 @@ var login_btn = document.getElementById('loginButton').onclick = function(){
     location.href="index.html";
 }
 
+var create_account_btn = document.getElementById('createAccountButton').onclick = function () {
+    location.href = "account_create.html";
+}
+
 email.addEventListener('textInput', email_Verify);
 password.addEventListener('textInput', password_Verify);
 function validated(){

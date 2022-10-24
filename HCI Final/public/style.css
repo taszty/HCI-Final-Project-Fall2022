@@ -7,8 +7,9 @@ body{
     background-size: cover;
     align-items: center;
     justify-content: center;
-    display: flex;
+    display: grid;
     font-family: sans-serif;
+    /* Dylan: I changed the display from flex -> grid so that the items on the page would stack rather than be side by side */
 }
 .container{
     position: relative;
@@ -45,7 +46,7 @@ body{
     margin-top: 30px;
 }
 .login_form button{
-    margin: 45px 0 30px 0;
+    margin: 0 0 0 0;
     height: 45px;
     width: 365px;
     font-size: 20px;
@@ -150,4 +151,62 @@ body{
 }
 input{
     max-width: 100%;
+}
+
+img {
+    
+}
+
+#logo {
+    border-radius: 8px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 163px;
+    width: 425px;
+    opacity: 1;
+}
+
+/* These are for navigation bar vvv*/
+header > img {
+    width: 100%;
+    height: auto;
+}
+
+ul {
+    display: flex;
+    align-content: stretch;
+    justify-content: space-around;
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+li {
+
+}
+
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        text-decoration: none;
+        
+    }
+
+        li a:hover {
+            background-color: #111111;
+        }
+
+    li::marker{
+        content: '';
+        opacity: 0;
+    }
+/* These are for a navigation bar ^^^*/
+
+h2 {
+    text-align: center;
 }
