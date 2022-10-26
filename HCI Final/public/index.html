@@ -1,20 +1,39 @@
 <!DOCTYPE html>
-<header><img id="logo" src="/images/companyLogo.png" alt="cLogo" /></header>
-<ul>
-    <li><a href="/index.html">Home</a></li>
-    <li><a href="/account.html">My Account</a></li>
-    <li><a href="/aboutUs.html">About Us</a></li>
-</ul>
+<header></header>
 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>iAverage ⚬ Home</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="/images/logo.png"/>
+    <link rel="stylesheet" href="styleNavbar.css" />
 </head>
 
 <body>
+    <!--navbar-->
+    <nav class="navbar">
+        <div>
+            <a id="navLogo" href="/index.html">
+                iAverage
+            </a>
+            <br />
+            <p id="navSlogan">
+                Calculating your future
+            </p>
+        </div>
+        <ul class="navlist">
+            <li class="navlistItem">
+                <a href="/index.html">Home</a>
+            </li>
+            <li class="navlistItem">
+                <a href="/account.html">My Account</a>
+            </li>
+            <li class="navlistItem">
+                <a href="/aboutUs.html">About Us</a>
+            </li>
+        </ul>
+    </nav>
+
     <div class="container">
         <div class="dropdown">
             <!-- <div class="select">
@@ -106,14 +125,14 @@
         dropdown.selectedIndex = 0;
 
         const url = 'https://pkgstore.datahub.io/core/s-and-p-500-companies/constituents_json/data/297344d8dc0a9d86b8d107449c851cc8/constituents_json.json';
-       // let priceURL = 'https://api.twelvedata.com/price?symbol=&apikey=60c2faf9f35740b7830c1fcdc3e12a8c';
+        // let priceURL = 'https://api.twelvedata.com/price?symbol=&apikey=60c2faf9f35740b7830c1fcdc3e12a8c';
 
         const request = new XMLHttpRequest();
 
-        function getInfo(request){
+        function getInfo(request) {
 
             request.open('GET', url, true);
-    
+
             request.onload = function () {
                 if (request.status === 200) {
                     const data = JSON.parse(request.responseText);
@@ -124,57 +143,57 @@
                         option.text = data[i].Name;
                         //console.log(option.text);
                         option.value = data[i].Symbol;
-    
+
                         dropdown.add(option);
                     }
                 } else {
                     // Reached the server, but it returned an error
                 }
             }
-    
+
             request.onerror = function () {
                 console.error('An error occurred fetching the JSON from ' + url);
             };
-    
-          return request.send();
+
+            return request.send();
         }
-function getPriceInfo(request){
+        function getPriceInfo(request) {
 
-request.open('GET', priceURL, true);
+            request.open('GET', priceURL, true);
 
-request.onload = function () {
-    if (request.status === 200) {
-        const data = JSON.parse(request.responseText);
-        console.log(data);
-        let option;
-        for (let i = 0; i < data.length; i++) {
-            option = document.createElement('option');
-            //option.text = data[i].Name;
-            //console.log(option.text);
-            option.value = data[i].price;
+            request.onload = function () {
+                if (request.status === 200) {
+                    const data = JSON.parse(request.responseText);
+                    console.log(data);
+                    let option;
+                    for (let i = 0; i < data.length; i++) {
+                        option = document.createElement('option');
+                        //option.text = data[i].Name;
+                        //console.log(option.text);
+                        option.value = data[i].price;
 
-            dropdown.add(option);
+                        dropdown.add(option);
+                    }
+                } else {
+                    // Reached the server, but it returned an error
+                }
+            }
+
+            request.onerror = function () {
+                console.error('An error occurred fetching the JSON from ' + url);
+            };
+
+            return request.send();
         }
-    } else {
-        // Reached the server, but it returned an error
-    }
-}
-
-request.onerror = function () {
-    console.error('An error occurred fetching the JSON from ' + url);
-};
-
-  return request.send();
-}
         getInfo(request);
-        function getAverage(){
+        function getAverage() {
             let shares = document.getElementById('curr_shares').value;
             let avgPrice = document.getElementById('avg_price').value;
             let stockComp = document.getElementById('locality-dropdown').value;
             let newShares = document.getElementById('new_shares').value;
             let newSharePrice = document.getElementById('share_price');
-            let priceURL = 'https://api.twelvedata.com/price?symbol='+stockComp+'&apikey=60c2faf9f35740b7830c1fcdc3e12a8c'
-            
+            let priceURL = 'https://api.twelvedata.com/price?symbol=' + stockComp + '&apikey=60c2faf9f35740b7830c1fcdc3e12a8c'
+
             const req = new XMLHttpRequest();
             request.open('GET', priceURL, true);
             let option;
@@ -183,27 +202,27 @@ request.onerror = function () {
                 if (request.status === 200) {
                     const data = JSON.parse(request.responseText);
                     console.log(data);
-                    
+
                     option = document.createElement('option');
-                    
+
                     newSharePrice = data.price;
-                    
-                    
+
+
                     dropdown.add(option);
-                    
+
                 } else {
                     // Reached the server, but it returned an error
                 }
             }
-            
+
             request.onerror = function () {
                 console.error('An error occurred fetching the JSON from ' + url);
             };
-            
+
             request.send();
-            finAvg.value = ((shares+avgPrice)+(newShares+newSharePrice))/(shares+newShares);   
+            finAvg.value = ((shares + avgPrice) + (newShares + newSharePrice)) / (shares + newShares);
         }
-        </script>
+    </script>
 
 </body>
 </html>

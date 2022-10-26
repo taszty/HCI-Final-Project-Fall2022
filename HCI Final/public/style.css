@@ -1,15 +1,15 @@
 *{
     padding: 0;
     margin-right: 0;
+    box-sizing: border-box;
 }
 body{
     background: #23242a;
     background-size: cover;
     align-items: center;
     justify-content: center;
-    display: grid;
+    display: block;
     font-family: sans-serif;
-    /* Dylan: I changed the display from flex -> grid so that the items on the page would stack rather than be side by side */
 }
 .container{
     position: relative;
@@ -18,6 +18,7 @@ body{
     height: auto;
     background: #dedede;
     border-radius: 5px;
+    justify-content: center;
 }
 .label{
     padding: 20px 130px;
@@ -153,11 +154,11 @@ input{
     max-width: 100%;
 }
 
-img {
+img{
     
 }
 
-#logo {
+#logo{
     border-radius: 8px;
     display: block;
     margin-left: auto;
@@ -167,46 +168,11 @@ img {
     opacity: 1;
 }
 
-/* These are for navigation bar vvv*/
-header > img {
-    width: 100%;
-    height: auto;
-}
-
-ul {
-    display: flex;
-    align-content: stretch;
-    justify-content: space-around;
-    width: 100%;
-    margin: 0;
-    padding: 5px;
-    overflow: hidden;
-    background-color: #333333;
-}
-
-li {
-
-}
-
-    li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 10px;
-        text-decoration: none;
-        
-    }
-
-        li a:hover {
-            background-color: #111111;
-        }
-
-    li::marker{
-        content: '';
-        opacity: 0;
-    }
-/* These are for a navigation bar ^^^*/
-
-h2 {
+h2{
     text-align: center;
+}
+
+.navbar {
+    background-color:midnightblue;
+    color: lightslategray;
 }

@@ -3,11 +3,34 @@
 <head>
     <title>iAverage ⚬ Login</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleNavbar.css" />
 </head>
+
 <body>
-    <h1>
-        <img id="logo" src="/images/companyLogo.png" alt="Logo" />
-    </h1>
+    <!--navbar-->
+    <nav class="navbar">
+        <div>
+            <a id="navLogo" href="/index.html">
+                iAverage
+            </a>
+            <br />
+            <p id="navSlogan">
+                Calculating your future
+            </p>
+        </div>
+        <ul class="navlist">
+            <li class="navlistItem">
+                <a href="/index.html">Home</a>
+            </li>
+            <li class="navlistItem">
+                <a href="/account.html">My Account</a>
+            </li>
+            <li class="navlistItem">
+                <a href="/aboutUs.html">About Us</a>
+            </li>
+        </ul>
+    </nav>
+
     <div class="container">
         <h1 class="label">User Login</h1>
         <form class="login_form" action="index.html" method="post" name="form" onsubmit="return validated()">
