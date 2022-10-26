@@ -1,10 +1,5 @@
 ﻿<!DOCTYPE html>
 <header><img id="logo" src="/images/companyLogo.png" alt="cLogo" /></header>
-<ul>
-    <li><a href="/index.html">Home</a></li>
-    <li><a href="/account.html">My Account</a></li>
-    <li><a href="/aboutUs.html">About Us</a></li>
-</ul>
 
 <html lang="en">
 <head>
@@ -14,6 +9,65 @@
     <link rel="icon" href="/images/logo.png" />
 </head>
 <body>
+    <!--navbar-->
+    <nav>
+        <div>
+            OUR LOGO
+        </div>
+        <ul>
+            <li>
+                <a>Home</a>
+            </li>
+            <li>
+                <a>My Account</a>
+            </li>
+            <li>
+                <a>About Us</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!--bootstrap cards-->
+    <div id="workspace" style="width: 1050px;">
+
+        <div class="card-deck">
+            <!-- inside card deck -->
+            <!-- Dylan -->
+            <div class="card" style="width: 18rem;">
+                <img src="" class="card-img-top" alt="">
+                <div class="card-body">
+                    <p class="card-text">Anakin Skywalker</p>
+                    <br />
+                    <p class="card-text">This is Anakin Skywalker. He is a really strong force user who ends up turning to the dark side.</p>
+                    <br />
+                    <a href="http://localhost:3050/application/anakin/">Anakin Skywalker</a>
+                    <br />
+                    <a href="http://localhost:3050/application/">Home</a>
+                </div>
+            </div>
+
+            <!-- Gabe -->
+            <div class="card" style="width: 18rem;">
+                <img src="" class="card-img-top" alt="">
+                <div class="card-body">
+                    <p class="card-text">Anakin Skywalker</p>
+                    <br />
+                    <p class="card-text">This is Anakin Skywalker. He is a really strong force user who ends up turning to the dark side.</p>
+                    <br />
+                    <a href="http://localhost:3050/application/anakin/">Anakin Skywalker</a>
+                    <br />
+                    <a href="http://localhost:3050/application/">Home</a>
+                </div>
+            </div>
+
+            <!-- inside card deck -->
+        </div>
+    </div>
 
 </body>
 </html>
+
+<!-- this portion will render the bootstrap card css -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
