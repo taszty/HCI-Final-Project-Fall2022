@@ -36,18 +36,7 @@
 
     <div class="container">
         <div class="dropdown">
-            <!-- <div class="select">
-                <span class="selected">Stocks</span>
-                <div class="caret"></div>
-            </div>
-            <ul class="menu">
-                <li>Apple</li>
-                <li>Hulu</li>
-                <li>Netflix</li>
-                <li>Tesla</li>
-                <li class="active">Costco</li>
-                <li>Walmart</li>
-            </ul> -->
+            
             <select id="locality-dropdown" name="locality">
             </select>
             <br />
@@ -68,11 +57,7 @@
             <input type="text" id="new_shares" name="new_shares" required
                    minlength="4" maxlength="8" size="10">
             <br />
-            <label for="name">Price of New Shares</label>
-            <br />
-            <input type="text" id="share_price" name="share_price" required
-                   minlength="4" maxlength="8" size="10">
-            <br />
+           
             <label for="name">Final Average Cost</label>
             <br />
 
@@ -83,37 +68,7 @@
         </div>
     </div>
     <script>
-        //     const dropdowns = document.querySelectorAll('.dropdown');
-        //     dropdowns.forEach(dropdown=>{
-        //         const select = dropdown.querySelector('.select');
-        //         const caret = dropdown.querySelector('.caret');
-        //         const menu = dropdown.querySelector('.menu');
-        //         const options = dropdown.querySelectorAll('.menu li');
-        //         const selected = dropdown.querySelector('.selected');
-
-        //         select.addEventListener('click', ()=>{
-        //             select.classList.toggle('select-clicked');
-        //             caret.classList.toggle('caret-rotate');
-        //             menu.classList.toggle('menu-open');
-
-        //         });
-        //         options.forEach(option=>{
-        //             option.addEventListener('click', ()=>{
-        //                 selected.innerText = option.innerText;
-        //                 select.classList.remove('select-clicked');
-        //                 caret.classList.remove('caret-rotate');
-        //                 menu.classList.remove('menu-open');
-        //                 options.forEach(option=>{
-        //                     option.classList.remove('active');
-        //                 });
-        //                 option.classList.add('active');
-
-
-        //             });
-        //         });
-        //     });
-        //     fetch('https://api.twelvedata.com/quote?symbol=AAPL&apikey=')
-        // .then(res=>res.json()).then(data=>console.log(data));
+       
 
         let dropdown = document.getElementById('locality-dropdown');
         dropdown.length = 0;
@@ -187,17 +142,17 @@
         }
         getInfo(request);
         function getAverage() {
-            let shares = document.getElementById('curr_shares').value;
-            let avgPrice = document.getElementById('avg_price').value;
+            let shares = parseFloat(document.getElementById('curr_shares').value);
+            let avgPrice = parseFloat(document.getElementById('avg_price').value);
             let stockComp = document.getElementById('locality-dropdown').value;
-            let newShares = document.getElementById('new_shares').value;
-            let newSharePrice = document.getElementById('share_price');
+            let newShares = parseFloat(document.getElementById('new_shares').value);
+            let newSharePrice;
             let priceURL = 'https://api.twelvedata.com/price?symbol=' + stockComp + '&apikey=60c2faf9f35740b7830c1fcdc3e12a8c'
 
             const req = new XMLHttpRequest();
             request.open('GET', priceURL, true);
             let option;
-            let finAvg = document.getElementById('fin_avg_cost');
+            let finAvg;
             request.onload = function () {
                 if (request.status === 200) {
                     const data = JSON.parse(request.responseText);
@@ -205,8 +160,10 @@
 
                     option = document.createElement('option');
 
-                    newSharePrice = data.price;
-
+                    newSharePrice = parseFloat(data.price);
+                    
+                   finAvg = document.getElementById('fin_avg_cost').value = ((shares + avgPrice) + (newShares + newSharePrice)) / (shares + newShares);
+                    console.log(finAvg);
 
                     dropdown.add(option);
 
@@ -220,7 +177,7 @@
             };
 
             request.send();
-            finAvg.value = ((shares + avgPrice) + (newShares + newSharePrice)) / (shares + newShares);
+            
         }
     </script>
 
