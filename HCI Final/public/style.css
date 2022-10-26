@@ -154,25 +154,7 @@ input{
     max-width: 100%;
 }
 
-img{
-    
-}
-
-#logo{
-    border-radius: 8px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: 163px;
-    width: 425px;
-    opacity: 1;
-}
-
-h2{
+#loginOr{
     text-align: center;
 }
 
-.navbar {
-    background-color:midnightblue;
-    color: lightslategray;
-}
