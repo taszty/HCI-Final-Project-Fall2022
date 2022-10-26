@@ -35,31 +35,32 @@
             <label for="name">Currently Owned Shares</label>
             <br />
 
-            <input type="text" id="name" name="name" required
+            <input type="text" id="curr_shares" name="curr_shares" required
                    minlength="4" maxlength="8" size="10">
             <br />
             <label for="name">Average Price of Shares</label>
             <br />
 
-            <input type="text" id="name" name="name" required
+            <input type="text" id="avg_price" name="avg_price" required
                    minlength="4" maxlength="8" size="10">
             <br />
             <label for="name">New Shares Being Purchased</label>
             <br />
-            <input type="text" id="name" name="name" required
+            <input type="text" id="new_shares" name="new_shares" required
                    minlength="4" maxlength="8" size="10">
             <br />
             <label for="name">Price of New Shares</label>
             <br />
-            <input type="text" id="name" name="name" required
+            <input type="text" id="share_price" name="share_price" required
                    minlength="4" maxlength="8" size="10">
             <br />
             <label for="name">Final Average Cost</label>
             <br />
 
-            <input type="text" id="name" name="name" required
+            <input type="text" id="fin_avg_cost" name="fin_avg_cost" required
                    minlength="4" maxlength="8" size="10">
             <br />
+            <button type="button" onclick="getAverage()">Calculate</button>
         </div>
     </div>
     <script>
@@ -105,34 +106,104 @@
         dropdown.selectedIndex = 0;
 
         const url = 'https://pkgstore.datahub.io/core/s-and-p-500-companies/constituents_json/data/297344d8dc0a9d86b8d107449c851cc8/constituents_json.json';
+       // let priceURL = 'https://api.twelvedata.com/price?symbol=&apikey=60c2faf9f35740b7830c1fcdc3e12a8c';
 
         const request = new XMLHttpRequest();
-        request.open('GET', url, true);
 
-        request.onload = function () {
-            if (request.status === 200) {
-                const data = JSON.parse(request.responseText);
-                console.log(data);
-                let option;
-                for (let i = 0; i < data.length; i++) {
-                    option = document.createElement('option');
-                    option.text = data[i].Name;
-                    //console.log(option.text);
-                    option.value = data[i].Symbol;
+        function getInfo(request){
 
-                    dropdown.add(option);
+            request.open('GET', url, true);
+    
+            request.onload = function () {
+                if (request.status === 200) {
+                    const data = JSON.parse(request.responseText);
+                    console.log(data);
+                    let option;
+                    for (let i = 0; i < data.length; i++) {
+                        option = document.createElement('option');
+                        option.text = data[i].Name;
+                        //console.log(option.text);
+                        option.value = data[i].Symbol;
+    
+                        dropdown.add(option);
+                    }
+                } else {
+                    // Reached the server, but it returned an error
                 }
-            } else {
-                // Reached the server, but it returned an error
             }
+    
+            request.onerror = function () {
+                console.error('An error occurred fetching the JSON from ' + url);
+            };
+    
+          return request.send();
         }
+function getPriceInfo(request){
 
-        request.onerror = function () {
-            console.error('An error occurred fetching the JSON from ' + url);
-        };
+request.open('GET', priceURL, true);
 
-        request.send();
-    </script>
+request.onload = function () {
+    if (request.status === 200) {
+        const data = JSON.parse(request.responseText);
+        console.log(data);
+        let option;
+        for (let i = 0; i < data.length; i++) {
+            option = document.createElement('option');
+            //option.text = data[i].Name;
+            //console.log(option.text);
+            option.value = data[i].price;
+
+            dropdown.add(option);
+        }
+    } else {
+        // Reached the server, but it returned an error
+    }
+}
+
+request.onerror = function () {
+    console.error('An error occurred fetching the JSON from ' + url);
+};
+
+  return request.send();
+}
+        getInfo(request);
+        function getAverage(){
+            let shares = document.getElementById('curr_shares').value;
+            let avgPrice = document.getElementById('avg_price').value;
+            let stockComp = document.getElementById('locality-dropdown').value;
+            let newShares = document.getElementById('new_shares').value;
+            let newSharePrice = document.getElementById('share_price');
+            let priceURL = 'https://api.twelvedata.com/price?symbol='+stockComp+'&apikey=60c2faf9f35740b7830c1fcdc3e12a8c'
+            
+            const req = new XMLHttpRequest();
+            request.open('GET', priceURL, true);
+            let option;
+            let finAvg = document.getElementById('fin_avg_cost');
+            request.onload = function () {
+                if (request.status === 200) {
+                    const data = JSON.parse(request.responseText);
+                    console.log(data);
+                    
+                    option = document.createElement('option');
+                    
+                    newSharePrice = data.price;
+                    
+                    
+                    dropdown.add(option);
+                    
+                } else {
+                    // Reached the server, but it returned an error
+                }
+            }
+            
+            request.onerror = function () {
+                console.error('An error occurred fetching the JSON from ' + url);
+            };
+            
+            request.send();
+            finAvg.value = ((shares+avgPrice)+(newShares+newSharePrice))/(shares+newShares);   
+        }
+        </script>
 
 </body>
 </html>
