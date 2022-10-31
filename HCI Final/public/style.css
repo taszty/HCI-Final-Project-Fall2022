@@ -13,24 +13,83 @@ body{
 }
 .container{
     position: relative;
+    margin: auto;
     margin-top: 100px;
     width: 450px;
     height: auto;
-    background: #dedede;
+    background: #c4bfbf;
     border-radius: 5px;
     justify-content: center;
 }
+.calc_container{
+    
+    margin: 50px;
+    margin-top: 100px;
+    width: 350px;
+    height: auto;
+    background: #c4bfbf;
+    border-radius: 5px;
+}
 .label{
-    padding: 20px 130px;
+    padding: 10px 130px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 35px;
     font-weight: bold;
     color: #130f40;
+}
+.calc_label{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 25px;
+    padding: 10px 15px;
+    font-weight: bold;
+    color: #130f40;
+}
+.dropdown select{
+    background:#a6b2cd8c;
+    color: rgb(81, 78, 78);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px #53607e solid;
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: back-ground 0.3s;
+}
+
+.stock_input label{
+    margin: 0px 20px;
+}
+.stock_input input{
+    background:#a6b2cd8c;
+    color: rgb(81, 78, 78);
+    border: 2px #53607e solid;
+    padding: 0px 15px;
+    height: 50px;
+    width: 75%;
+    margin: 8px 20px;
+    border-radius: 4px;
+}
+.calc_container button{
+    margin: 15px 15px 10px 10px;
+    height: 45px;
+    width: 100px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.86);
+    outline:rgba(44, 42, 42, 0.2);
+    cursor: pointer;
+    
+    background: #53599f;
+    border-radius: 3px;
+    border: 1px solid #3c4479;
+    transition: 0.5s;
 }
 .login_form{
     padding: 20px 40px;
 
 }
 .login_form .font{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     color: #130f40;
     margin: 5px 0;
@@ -78,12 +137,19 @@ body{
 }
 .dropdown{
     min-width: 15em;
+    justify-content: space-between;
+    border-radius: 0.5em;
     position: relative;
-    margin: 2em;
+    
+    padding: 1em;
+    
 }
+
 .dropdown *{
     box-sizing: border-box;
 }
+
+
 .select{
     background:#2a2f3b;
     color: #fff;
