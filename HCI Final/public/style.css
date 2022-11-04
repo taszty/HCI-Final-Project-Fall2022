@@ -1,11 +1,90 @@
+@import "compass/css3";
+@import 'https://fonts.googleapis.com/css?family=Montserrat:300,400,700';
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif);
 
 body{
-    background: #23242a;
+    background: #25262a;
     background-size: cover;
     align-items: center;
     justify-content: center;
     display: block;
     font-family: sans-serif;
+}
+.row{
+    background:rgba(7, 7, 7, 0.2);
+}
+/* table{
+    width: 400px;
+    border-spacing: 40px;
+} */
+.stock_table{
+    
+    margin: 1em 0;
+    min-width: 300px; 
+
+}
+.stock_table tr{
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+.stock_table td {
+    display: block;
+}
+.stock_table td:first-child {
+    padding-top: 0.5em;
+}
+.stock_table td:last-child {
+    padding-bottom: 0.5em;
+}
+.stock_table td:before {
+    
+    font-weight: bold;
+    width: 6.5em;
+    display: inline-block;
+}
+@media (min-width: 480px) {
+    .stock_table td:before {
+        display: none;
+   }
+}
+.stock_table th, .stock_table td {
+    text-align: left;
+}
+@media (min-width: 480px) {
+    .stock_table th, .stock_table td {
+        display: table-cell;
+        padding: 0.25em 0.5em;
+   }
+    .stock_table th:first-child, .stock_table td:first-child {
+        padding-left: 0;
+   }
+    .stock_table th:last-child, .stock_table td:last-child {
+        padding-right: 0;
+   }
+}
+.stock_info{
+    margin: auto;
+    position: relative;
+}
+.stock_table {
+    background: #34495e;
+    color: #fff;
+    border-radius: 0.4em;
+    overflow: hidden;
+}
+.stock_table tr {
+    border-color: #46637f;
+}
+.stock_table th, .stock_table td {
+    margin: 0.5em 1em;
+}
+@media (min-width: 480px) {
+    .stock_table th, .stock_table td {
+        padding: 1em !important;
+   }
+}
+.stock_table th, .stock_table td:before {
+    color: #dd5;
 }
 .container{
     position: relative;
@@ -17,37 +96,56 @@ body{
     border-radius: 5px;
     justify-content: center;
 }
+.stock_calc{
+    margin: auto;
+    position: relative;
+    
+}
+
 .calc_container{
     
-    margin: 50px;
-    margin-top: 100px;
-    width: 350px;
-    height: auto;
-    background: #c4bfbf;
-    border-radius: 5px;
+    font-family: "droid serif";
+	background: rgba(255,255,255,.1);
+	border: none;
+	border-radius: 4px;
+	font-size: 15px;
+	
+	outline: 0;
+	padding: 10px;
+	
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
+	background-color: #e5ebed;
+	color:#8a97a0;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	margin-top: 30px;
+    margin-bottom: 30px;
 }
 .label{
     padding: 10px 130px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:"droid serif";
     font-size: 35px;
     font-weight: bold;
     color: #130f40;
 }
 .calc_label{
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family:'droid serif';
     font-size: 25px;
     padding: 10px 15px;
     font-weight: bold;
     color: #130f40;
 }
 .dropdown select{
-    background:#a6b2cd8c;
+    
+    width: 75%;
     color: rgb(81, 78, 78);
     display: flex;
     justify-content: space-between;
     align-items: center;
     border: 2px #53607e solid;
-    border-radius: 0.5em;
+    border-radius: 22px;
     padding: 1em;
     cursor: pointer;
     transition: back-ground 0.3s;
@@ -56,18 +154,36 @@ body{
 .stock_input label{
     margin: 0px 20px;
 }
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
 .stock_input input{
-    background:#a6b2cd8c;
+    
     color: rgb(81, 78, 78);
     border: 2px #53607e solid;
     padding: 0px 15px;
     height: 50px;
     width: 75%;
     margin: 8px 20px;
-    border-radius: 4px;
+    border-radius: 22px;
+    
+    /* border:none;
+  outline:none;
+  display:inline-block;
+  height:34px;
+  vertical-align:middle;
+  position:relative;
+  bottom:14px;
+  right:9px;
+  border-radius:22px;
+  width:220px;
+  box-sizing:border-box;
+  padding:0 18px; */
 }
 .calc_container button{
-    margin: 15px 15px 10px 10px;
+    margin: auto;
     height: 45px;
     width: 100px;
     font-size: 20px;
