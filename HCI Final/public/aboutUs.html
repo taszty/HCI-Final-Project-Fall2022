@@ -7,6 +7,8 @@
     <title>iAverage ⚬ About</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="styleNavbar.css" />
+    <!--Script for the crypto prices-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" ></script>
 </head>
 
 <body>
@@ -35,6 +37,65 @@
     </nav>
 
     <br />
+
+    <div class="pContainer">
+        <div class="coinPrice">
+            <div class="cLogo">
+                <img src="/images/bitcoinLogo.png" />
+            </div>
+            <div class="coinTextDiv">
+                <h1 class="coinText">
+                    $<span id="bitcoin"></span>
+                </h1>
+                <h1 class="coinText">
+                    Bitcoin
+                </h1>
+            </div>
+        </div>
+
+        <div class="coinPrice">
+            <div class="cLogo">
+                <img src="/images/ethLogo.png" />
+            </div>
+            <div class="coinTextDiv">
+                <h1 class="coinText">
+                    $<span id="ethereum"></span>
+                </h1>
+                <h1 class="coinText">
+                    Etherium
+                </h1>
+            </div>
+        </div>
+
+        <div class="coinPrice">
+            <div class="cLogo">
+                <img src="/images/bnbLogo.png" />
+            </div>
+            <div class="coinTextDiv">
+                <h1 class="coinText">
+                    $<span id="binancecoin"></span>
+                </h1>
+                <h1 class="coinText">
+                    BNB
+                </h1>
+            </div>
+        </div>
+
+        <div class="coinPrice">
+            <div class="cLogo">
+                <img src="/images/dogecoinLogo.png" />
+            </div>
+            <div class="coinTextDiv">
+                <h1 class="coinText">
+                    $<span id="dogecoin"></span>
+                </h1>
+                <h1 class="coinText">
+                    Dogecoin
+                </h1>
+            </div>
+        </div>
+
+    </div>
 
     <div class="titleHeader">
         <p>
@@ -74,7 +135,7 @@
     </div>
 
 
-
+    <script src="coinPrices.js"></script>
 </body>
 </html>
 
