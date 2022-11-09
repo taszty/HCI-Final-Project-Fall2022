@@ -7,11 +7,15 @@
     <title>iAverage ⚬ Home</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="styleNavbar.css" />
+    <link rel="stylesheet" href="coinPrice.css" />
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <!--Script for the crypto prices-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 </head>
 
 <body>
@@ -38,25 +42,90 @@
             </li>
         </ul>
     </nav>
-<div class="page_format">
-    <div class="row">
-        <div class="stock_calc">
-    <div class="calc_container" float="left">
-        <h1 class="calc_label">Calculator</h1>
-        <form class="stock_input">
+
+    <br />
+
+    <!--Crypto Tickers-->
+    <div class="pContainer">
+        <div class="coinPrice">
+            <div class="cLogo">
+                <img src="/images/bitcoinLogo.png" />
+            </div>
+            <div class="coinTextDiv">
+                <h1 class="coinText">
+                    $<span id="bitcoin"></span>
+                </h1>
+                <h1 class="coinText">
+                    Bitcoin
+                </h1>
+            </div>
+        </div>
+
+        <div class="coinPrice">
+            <div class="cLogo">
+                <img src="/images/ethLogo.png" />
+            </div>
+            <div class="coinTextDiv">
+                <h1 class="coinText">
+                    $<span id="ethereum"></span>
+                </h1>
+                <h1 class="coinText">
+                    Etherium
+                </h1>
+            </div>
+        </div>
+
+        <div class="coinPrice">
+            <div class="cLogo">
+                <img src="/images/bnbLogo.png" />
+            </div>
+            <div class="coinTextDiv">
+                <h1 class="coinText">
+                    $<span id="binancecoin"></span>
+                </h1>
+                <h1 class="coinText">
+                    BNB
+                </h1>
+            </div>
+        </div>
+
+        <div class="coinPrice">
+            <div class="cLogo">
+                <img src="/images/dogecoinLogo.png" />
+            </div>
+            <div class="coinTextDiv">
+                <h1 class="coinText">
+                    $<span id="dogecoin"></span>
+                </h1>
+                <h1 class="coinText">
+                    Dogecoin
+                </h1>
+            </div>
+        </div>
+
+    </div>
+
+    <br />
+
+    <div class="page_format">
+        <div class="row">
+            <div class="stock_calc">
+                <div class="calc_container" float="left">
+                    <h1 class="calc_label">Calculator</h1>
+                    <form class="stock_input">
                         <div class="dropdown">
                             <select id="locality-dropdown" name="locality">
                             </select>
-                            </div>
+                        </div>
                         <label for="name">Currently Owned Shares</label>
                         <br />
-            
+
                         <input type="text" id="curr_shares" name="curr_shares" required
                                minlength="4" maxlength="8" size="10">
                         <br />
                         <label for="name">Average Price of Shares</label>
                         <br />
-            
+
                         <input type="text" id="avg_price" name="avg_price" required
                                minlength="4" maxlength="8" size="10">
                         <br />
@@ -65,26 +134,27 @@
                         <input type="text" id="new_shares" name="new_shares" required
                                minlength="4" maxlength="8" size="10">
                         <br />
-                       
+
                         <label for="name">Final Average Cost</label>
                         <br />
-            
+
                         <input type="text" id="fin_avg_cost" name="fin_avg_cost" required
                                minlength="4" maxlength="8" size="10">
-        
+
                     </form>
                     <br />
                     <br />
                     <button type="button" onclick="getAverage()">Calculate</button>
                 </div>
-                </div>
-                <div class="stock_info">
-                    <table class="stock_table">
-                        <tr>
-                            <th>Stock Company: </th>
-                            <th id="comp_name"></th>
-                        </tr>
-                        <tbody>
+            </div>
+
+            <div class="stock_info">
+                <table class="stock_table">
+                    <tr>
+                        <th>Stock Company: </th>
+                        <th id="comp_name"></th>
+                    </tr>
+                    <tbody>
                         <tr>
                             <td>Symbol: </td>
                             <td id="comp_symbol"></td>
@@ -110,32 +180,26 @@
                             <td id="exchange"></td>
                         </tr>
                     </tbody>
-                    </table>
-                    <a href="https://www.google.com/finance/" id="google_link">More Info</a>
-            
+                </table>
+                <a href="https://www.google.com/finance/" id="google_link">More Info</a>
             </div>
-            
-            
         </div>
-       
     </div>
-    
-    
-    
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
+
     <script>
 
-       const compName = document.getElementById('comp_name');
-       const compSymbol = document.getElementById('comp_symbol');
-       const curr = document.getElementById('currency');
-       const prevClose = document.getElementById('prev_close');
-       const priceRange = document.getElementById('price_range');
-       const avgVolume = document.getElementById('avg_volume');
-       const exchange = document.getElementById('exchange');
-                                                 
-                                                        let dropdown = document.getElementById('locality-dropdown');
-                                                        dropdown.length = 0;
+        const compName = document.getElementById('comp_name');
+        const compSymbol = document.getElementById('comp_symbol');
+        const curr = document.getElementById('currency');
+        const prevClose = document.getElementById('prev_close');
+        const priceRange = document.getElementById('price_range');
+        const avgVolume = document.getElementById('avg_volume');
+        const exchange = document.getElementById('exchange');
+
+        let dropdown = document.getElementById('locality-dropdown');
+        dropdown.length = 0;
 
         let defaultOption = document.createElement('option');
         defaultOption.text = 'Choose Stock Company';
@@ -162,24 +226,24 @@
                         option.text = data[i].Name;
                         //console.log(option.text);
                         option.value = data[i].Symbol;
-                        
+
                         dropdown.add(option);
                     }
                 } else {
                     // Reached the server, but it returned an error
                 }
             }
-            
+
             request.onerror = function () {
                 console.error('An error occurred fetching the JSON from ' + url);
             };
-            
+
             return request.send();
         }
         function getPriceInfo(request) {
-            
+
             request.open('GET', priceURL, true);
-            
+
             request.onload = function () {
                 if (request.status === 200) {
                     const data = JSON.parse(request.responseText);
@@ -190,18 +254,18 @@
                         //option.text = data[i].Name;
                         //console.log(option.text);
                         option.value = data[i].price;
-                        
+
                         dropdown.add(option);
                     }
                 } else {
                     // Reached the server, but it returned an error
                 }
             }
-            
+
             request.onerror = function () {
                 console.error('An error occurred fetching the JSON from ' + url);
             };
-            
+
             return request.send();
         }
         let quoteURL;
@@ -214,8 +278,8 @@
             let newShares = parseFloat(document.getElementById('new_shares').value);
             let newSharePrice;
             let priceURL = 'https://api.twelvedata.com/price?symbol=' + stockComp + '&apikey=60c2faf9f35740b7830c1fcdc3e12a8c'
-            quoteURL = 'https://api.twelvedata.com/quote?symbol='+stockComp+'&apikey=60c2faf9f35740b7830c1fcdc3e12a8c&source=docs';
-           // finURL = 'https://www.google.com/finance/quote/'+stockComp+':NASDAQ?sa=X&ved=2ahUKEwiOrMXP1o_7AhXMk2oFHQXZCEAQ3ecFegQIHRAi';
+            quoteURL = 'https://api.twelvedata.com/quote?symbol=' + stockComp + '&apikey=60c2faf9f35740b7830c1fcdc3e12a8c&source=docs';
+            // finURL = 'https://www.google.com/finance/quote/'+stockComp+':NASDAQ?sa=X&ved=2ahUKEwiOrMXP1o_7AhXMk2oFHQXZCEAQ3ecFegQIHRAi';
             const req = new XMLHttpRequest();
             request.open('GET', priceURL, true);
             let option;
@@ -224,34 +288,34 @@
                 if (request.status === 200) {
                     const data = JSON.parse(request.responseText);
                     console.log(data);
-                    
+
                     option = document.createElement('option');
-                    
+
                     newSharePrice = parseFloat(data.price);
-                    
+
                     finAvg = document.getElementById('fin_avg_cost').value = ((shares + avgPrice) + (newShares + newSharePrice)) / (shares + newShares);
                     console.log(finAvg);
-                    
+
                     dropdown.add(option);
                     getQuote();
                     $('#google_link').attr('href', finURL);
-                    
+
                 } else {
                     // Reached the server, but it returned an error
                 }
             }
-            
+
             request.onerror = function () {
                 console.error('An error occurred fetching the JSON from ' + url);
             };
-            
+
             request.send();
-            
+
         }
-        function getQuote(){
+        function getQuote() {
             const req = new XMLHttpRequest();
             request.open('GET', quoteURL, true);
-            
+
             request.onload = function () {
                 if (request.status === 200) {
                     const data = JSON.parse(request.responseText);
@@ -261,25 +325,26 @@
                     curr.innerHTML = data.currency;
                     prevClose.innerHTML = data.previous_close;
                     avgVolume.innerHTML = data.average_volume;
-                    priceRange.innerHTML = data.low+'-'+data.high;
+                    priceRange.innerHTML = data.low + '-' + data.high;
                     exchange.innerHTML = data.exchange;
-                    finURL = 'https://www.google.com/finance/quote/'+stockComp+':'+exchange+'?sa=X&ved=2ahUKEwiOrMXP1o_7AhXMk2oFHQXZCEAQ3ecFegQIHRAi';
-                    
-                    
-                    
+                    finURL = 'https://www.google.com/finance/quote/' + stockComp + ':' + exchange + '?sa=X&ved=2ahUKEwiOrMXP1o_7AhXMk2oFHQXZCEAQ3ecFegQIHRAi';
+
+
+
                 } else {
                     // Reached the server, but it returned an error
                 }
             }
-            
+
             request.onerror = function () {
                 console.error('An error occurred fetching the JSON from ' + url);
             };
-            
+
             request.send();
         }
 
     </script>
-
+    <!--Script for the crypto prices-->
+    <script src="coinPrices.js"></script>
 </body>
 </html>

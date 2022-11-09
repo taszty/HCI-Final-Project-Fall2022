@@ -7,7 +7,16 @@
     <title>Welcome</title>
     <link rel="stylesheet" href="welcome.css">
     <link rel="stylesheet" href="styleNavbar.css">
+    <link rel="stylesheet" href="coinPrice.css" />
+
+    <!--Links that were previously above the datetime div-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+    <!--Script for the crypto prices-->
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 </head>
+
 <body>
     <nav class="navbar">
         <div>
@@ -31,71 +40,135 @@
             </li>
         </ul>
     </nav>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
 
-<div class="datetime">
-  <div class="time"></div>
-  <div class="date"></div>
-</div>
+    <br />
+
+    <!--Crypto Tickers-->
+    <div class="pContainer">
+        <div class="coinPrice">
+            <div class="cLogo">
+                <img src="/images/bitcoinLogo.png" />
+            </div>
+            <div class="coinTextDiv">
+                <h1 class="coinText">
+                    $<span id="bitcoin"></span>
+                </h1>
+                <h1 class="coinText">
+                    Bitcoin
+                </h1>
+            </div>
+        </div>
+
+        <div class="coinPrice">
+            <div class="cLogo">
+                <img src="/images/ethLogo.png" />
+            </div>
+            <div class="coinTextDiv">
+                <h1 class="coinText">
+                    $<span id="ethereum"></span>
+                </h1>
+                <h1 class="coinText">
+                    Etherium
+                </h1>
+            </div>
+        </div>
+
+        <div class="coinPrice">
+            <div class="cLogo">
+                <img src="/images/bnbLogo.png" />
+            </div>
+            <div class="coinTextDiv">
+                <h1 class="coinText">
+                    $<span id="binancecoin"></span>
+                </h1>
+                <h1 class="coinText">
+                    BNB
+                </h1>
+            </div>
+        </div>
+
+        <div class="coinPrice">
+            <div class="cLogo">
+                <img src="/images/dogecoinLogo.png" />
+            </div>
+            <div class="coinTextDiv">
+                <h1 class="coinText">
+                    $<span id="dogecoin"></span>
+                </h1>
+                <h1 class="coinText">
+                    Dogecoin
+                </h1>
+            </div>
+        </div>
+
+    </div>
+
+    <br />
+
+    <div class="datetime">
+        <div class="time"></div>
+        <div class="date"></div>
+    </div>
+
+    <!--Script for the crypto prices-->
+    <script src="coinPrices.js"></script>
+
+    <script>
+        const timeElement = document.querySelector(".time");
+        const dateElement = document.querySelector(".date");
+
+        /**
+         * @param {Date} date
+         */
+        function formatTime(date) {
+            const hours12 = date.getHours() % 12 || 12;
+            const minutes = date.getMinutes();
+            const isAm = date.getHours() < 12;
+
+            return `${hours12.toString().padStart(2, "0")}:${minutes
+                .toString()
+                .padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
+        }
+
+        /**
+         * @param {Date} date
+         */
+        function formatDate(date) {
+            const DAYS = [
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+            ];
+            const MONTHS = [
+                "January",
+                "February",
+                "March",
+                "April",
+                "May",
+                "June",
+                "July",
+                "August",
+                "September",
+                "October",
+                "November",
+                "December"
+            ];
+
+            return `${DAYS[date.getDay()]}, ${MONTHS[date.getMonth()]
+                } ${date.getDate()} ${date.getFullYear()}`;
+        }
+
+        setInterval(() => {
+            const now = new Date();
+
+            timeElement.textContent = formatTime(now);
+            dateElement.textContent = formatDate(now);
+        }, 200);
+
+    </script>
 </body>
-<script>
-    const timeElement = document.querySelector(".time");
-const dateElement = document.querySelector(".date");
-
-/**
- * @param {Date} date
- */
-function formatTime(date) {
-  const hours12 = date.getHours() % 12 || 12;
-  const minutes = date.getMinutes();
-  const isAm = date.getHours() < 12;
-
-  return `${hours12.toString().padStart(2, "0")}:${minutes
-    .toString()
-    .padStart(2, "0")} ${isAm ? "AM" : "PM"}`;
-}
-
-/**
- * @param {Date} date
- */
-function formatDate(date) {
-  const DAYS = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-  const MONTHS = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-
-  return `${DAYS[date.getDay()]}, ${
-    MONTHS[date.getMonth()]
-  } ${date.getDate()} ${date.getFullYear()}`;
-}
-
-setInterval(() => {
-  const now = new Date();
-
-  timeElement.textContent = formatTime(now);
-  dateElement.textContent = formatDate(now);
-}, 200);
-
-</script>
 </html>

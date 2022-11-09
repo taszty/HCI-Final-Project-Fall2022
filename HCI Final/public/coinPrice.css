@@ -1,0 +1,36 @@
+.pContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+}
+
+    .pContainer .coinPrice {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px, 10px;
+        border-radius: 20px;
+        box-shadow: 0 0 5px #ddd;
+        margin: 10px;
+    }
+
+        .pContainer .coinPrice .cLogo {
+            width: 70px;
+            margin: 10px;
+        }
+
+            .pContainer .coinPrice .cLogo img {
+                width: 100%;
+            }
+
+        .pContainer .coinPrice div {
+            display: block;
+        }
+
+.coinText {
+    font-family: Arial;
+    color: lightgray;
+    font-size: 25px;
+    margin-right: 20px;
+}
