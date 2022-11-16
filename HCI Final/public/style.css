@@ -10,9 +10,7 @@ body{
     display: block;
     font-family: sans-serif;
 }
-.row{
-    background:rgba(7, 7, 7, 0.2);
-}
+
 /* table{
     width: 400px;
     border-spacing: 40px;
@@ -96,7 +94,11 @@ body{
     border-radius: 5px;
     justify-content: center;
 }
-.stock_calc{
+.label{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+/*.stock_calc{
     margin: auto;
     position: relative;
     
@@ -180,7 +182,7 @@ body{
   border-radius:22px;
   width:220px;
   box-sizing:border-box;
-  padding:0 18px; */
+  padding:0 18px; 
 }
 .calc_container button{
     margin: auto;
@@ -195,7 +197,7 @@ body{
     border-radius: 3px;
     border: 1px solid #3c4479;
     transition: 0.5s;
-}
+}*/
 .login_form{
     padding: 20px 40px;
 

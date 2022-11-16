@@ -1,54 +1,50 @@
-function setFormMessage(formElement, type, message) {
-    const messageElement = formElement.querySelector(".form__message");
 
-    messageElement.textContent = message;
-    messageElement.classList.remove("form__message--success", "form__message--error");
-    messageElement.classList.add(`form__message--${type}`);
+var email = document.forms['form']['email'];
+var password = document.forms['form']['password'];
+
+var email_error = document.getElementById('email_error');
+var password_error = document.getElementById('password_error');
+
+// var login_btn = document.getElementById('loginButton').onclick = function(){
+//     location.href="index.html";
+// }
+
+// var create_account_btn = document.getElementById('createAccountButton').onclick = function () {
+//     location.href = "account_create.html";
+// }
+
+email.addEventListener('textInput', email_Verify);
+password.addEventListener('textInput', password_Verify);
+function validated(){
+    if(email.value.length < 9){
+        email.style.border = "1px solid red";
+        email_error.style.display = "block";
+        email.focus();
+        return false;
+    }
+    if(password.value.length < 9){
+        password.style.border = "1px solid red";
+        password_error.style.display = "block";
+        password.focus();
+        return false;
+    }
 }
-
-function setInputError(inputElement, message) {
-    inputElement.classList.add("form__input--error");
-    inputElement.parentElement.querySelector(".form__input-error-message").textContent = message;
+function email_Verify(){
+    if(email.value.length>=8){
+        email.style.border = "1px solid silver";
+        email_error.style.display = "none";
+        
+        return true;
+    }
 }
-
-function clearInputError(inputElement) {
-    inputElement.classList.remove("form__input--error");
-    inputElement.parentElement.querySelector(".form__input-error-message").textContent = "";
+function password_Verify(){
+    if(password.value.length>=8){
+        password.style.border = "1px solid silver";
+        password_error.style.display = "none";
+        
+        return true;
+    }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    const loginForm = document.querySelector("#login");
-    const createAccountForm = document.querySelector("#createAccount");
-
-    document.querySelector("#linkCreateAccount").addEventListener("click", e => {
-        e.preventDefault();
-        loginForm.classList.add("form--hidden");
-        createAccountForm.classList.remove("form--hidden");
-    });
-
-    document.querySelector("#linkLogin").addEventListener("click", e => {
-        e.preventDefault();
-        loginForm.classList.remove("form--hidden");
-        createAccountForm.classList.add("form--hidden");
-    });
-
-    loginForm.addEventListener("submit", e => {
-        e.preventDefault();
-
-        // Perform your AJAX/Fetch login
-
-        setFormMessage(loginForm, "error", "Invalid username/password combination");
-    });
-
-    document.querySelectorAll(".form__input").forEach(inputElement => {
-        inputElement.addEventListener("blur", e => {
-            if (e.target.id === "signupUsername" && e.target.value.length > 0 && e.target.value.length < 10) {
-                setInputError(inputElement, "Username must be at least 10 characters in length");
-            }
-        });
-
-        inputElement.addEventListener("input", e => {
-            clearInputError(inputElement);
-        });
-    });
-});
+function goToHome(){
+    location.href="welcome.html";
+}

@@ -1,10 +1,117 @@
 <!DOCTYPE html>
 <header></header>
+<style>
+    .stock_calc{
+    margin: auto;
+    position: relative;
+    
+}
 
+.calc_container{
+    
+    font-family: "droid serif";
+	background: black;
+	border: none;
+	border-radius: 4px;
+	font-size: 15px;
+	
+	outline: 0;
+	padding: 10px;
+	
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
+	background-color: #d5ccdc;
+	color:#212427;
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	margin-top: 30px;
+    margin-bottom: 30px;
+}
+.label{
+    padding: 10px 130px;
+    font-family:"droid serif";
+    font-size: 35px;
+    font-weight: bold;
+    color: #130f40;
+}
+.calc_label{
+    font-family:'droid serif';
+    font-size: 25px;
+    padding: 10px 15px;
+    font-weight: bold;
+    color: #130f40;
+}
+.dropdown select{
+    
+    width: 75%;
+    color: rgb(81, 78, 78);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px #53607e solid;
+    border-radius: 22px;
+    padding: 1em;
+    cursor: pointer;
+    transition: back-ground 0.3s;
+}
+
+.stock_input label{
+    margin: 0px 20px;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.stock_input input{
+    
+    color: rgb(81, 78, 78);
+    border: 2px #53607e solid;
+    padding: 0px 15px;
+    height: 50px;
+    width: 75%;
+    margin: 8px 20px;
+    border-radius: 22px;
+    
+    /* border:none;
+  outline:none;
+  display:inline-block;
+  height:34px;
+  vertical-align:middle;
+  position:relative;
+  bottom:14px;
+  right:9px;
+  border-radius:22px;
+  width:220px;
+  box-sizing:border-box;
+  padding:0 18px; */
+}
+.calc_container button{
+    margin: auto;
+    height: 45px;
+    width: 100px;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.86);
+    outline:rgba(44, 42, 42, 0.2);
+    cursor: pointer;
+    
+    background: #53599f;
+    border-radius: 3px;
+    border: 1px solid #3c4479;
+    transition: 0.5s;
+}
+.row{
+    background: rgb(49, 46, 46);
+}
+.pContainer{
+    background: rgb(49, 46, 46);
+}
+</style>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>iAverage ⚬ Home</title>
+    <title>iAverage ⚬ Calculator</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="styleNavbar.css" />
     <link rel="stylesheet" href="coinPrice.css" />
@@ -43,7 +150,7 @@
         </ul>
     </nav>
 
-    <br />
+    
 
     <!--Crypto Tickers-->
     <div class="pContainer">
@@ -105,7 +212,7 @@
 
     </div>
 
-    <br />
+   
 
     <div class="page_format">
         <div class="row">
