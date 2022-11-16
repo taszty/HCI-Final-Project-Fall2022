@@ -400,7 +400,7 @@
 
                     newSharePrice = parseFloat(data.price);
 
-                    finAvg = document.getElementById('fin_avg_cost').value = ((shares + avgPrice) + (newShares + newSharePrice)) / (shares + newShares);
+                    finAvg = document.getElementById('fin_avg_cost').value = ((shares * avgPrice) + (newShares * newSharePrice)) / (shares + newShares);
                     console.log(finAvg);
 
                     dropdown.add(option);
