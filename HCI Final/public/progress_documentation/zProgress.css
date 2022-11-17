@@ -1,20 +1,20 @@
 /* Add a black background color to the top navigation */
 .topnav {
-    background-color: #1f180f;
+    background-color: #363636;
     overflow: hidden;
     width: auto;
+    font-family: 'Courier New';
 }
 
     /* Style the links inside the navigation bar */
     .topnav a {
         float: left;
-        color: #f2f2f2;
+        color: #d6d6d6;
         text-align: center;
         padding: 25px 25px;
         text-decoration: none;
         font-size: 25px;
         width: 300px;
-
     }
 
         /* Change the color of links on hover */
@@ -30,5 +30,52 @@
         }
 
 body {
-    background-color: #1b2136;
+    background-color: #242323;
+    font-family: 'Courier New';
+    
 }
+
+.maintopic {
+
+}
+
+    .maintopic .header {
+        color: #d6d6d6;
+        font-size: 30px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .maintopic .topicbody {
+        color: #d6d6d6;
+        font-size: 20px;
+        text-align: center;
+        padding-left: 25%;
+        padding-right: 25%;
+        line-height: 30px;
+    }
+
+    .maintopic .spac {
+        display: block;
+        width: 1200px;
+        height: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 200px;
+    }
+
+    .maintopic .spacb {
+        display: block;
+        width: 1200px;
+        height: 500px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 200px;
+    }
+
+    .maintopic .imglabel {
+        color: #d6d6d6;
+        font-size: 50px;
+        text-align: center;
+        font-style: italic;
+    }
