@@ -347,6 +347,7 @@
 
             return request.send();
         }
+
         function getPriceInfo(request) {
 
             request.open('GET', priceURL, true);
@@ -375,6 +376,7 @@
 
             return request.send();
         }
+        
         let quoteURL;
         let finURL;
         getInfo(request);
@@ -417,7 +419,6 @@
             };
 
             request.send();
-
         }
         function getQuote() {
             const req = new XMLHttpRequest();

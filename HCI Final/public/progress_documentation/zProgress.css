@@ -106,3 +106,7 @@ body {
         margin-right: auto;
         border-radius: 200px;
     }
+
+    .maintopic .output{
+        margin:auto;
+    }
