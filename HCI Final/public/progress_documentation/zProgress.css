@@ -35,10 +35,6 @@ body {
     
 }
 
-.maintopic {
-
-}
-
     .maintopic .header {
         color: #d6d6d6;
         font-size: 30px;
@@ -108,5 +104,10 @@ body {
     }
 
     .maintopic .output{
-        margin:auto;
+        display: block;
+        width: 1200px;
+        height: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 200px;
     }
